@@ -56,7 +56,8 @@ def linear_search(arr, target):
   for i in range(len(arr)): #O(N)
     if arr[i] == target: #O(N)
         return i #O(1)
-  return -1 #O(1)
+    else:
+        return -1 #O(1)
 
 result = linear_search(arr, target)
 
