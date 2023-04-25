@@ -62,4 +62,4 @@ def linear_search(arr, target):
 result = linear_search(arr, target)
 
 print(result)
-# Time complexity is #O(N) linear
+# Time complexity is #O(N) linear & O(1) constant
