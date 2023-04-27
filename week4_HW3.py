@@ -108,6 +108,7 @@ class Pokemon():
         self.weight = None
         self.image = None
         self.pokes = []
+        self.call_poke_api()
         self.evolve_chain = LinkedList        
             
     def get_evolution_chain(self):
@@ -118,6 +119,25 @@ class Pokemon():
         evolution_chain = get(evolution_chain_url)
         if evolution_chain.status_code == 200:
             return evolution_chain.json()['chain']
+        
+    def call_poke_api(self):
+        if isinstance(self.name, str) and self.name.isalpha():
+            self.name = self.name.lower()
+        response = get(f'https://pokeapi.co/api/v2/pokemon/{self.name}')
+        if response.status_code == 200:
+            print('Success')
+            data = response.json()
+            self.name = data['name']
+            self.abilities = [ability_object['ability']['name'] for ability_object in data['abilities']]
+            self.types = [type_object['type']['name'] for type_object in data['types']]
+            self.weight = data['weight']
+#            self.image = data['sprites']['front_defualt']
+            self.image = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
+            if not self.image:
+                self.image = data['sprites']['front_default']
+            self.species_url = data['species']['url']
+        else:
+            print(f'Error status code {response.status_code}')
 
     def add_evolve_chain(self, current_pokemon, evolution_chain):
         node = Node(current_pokemon)
