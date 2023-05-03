@@ -109,7 +109,7 @@ class Pokemon():
         self.image = None
         self.pokes = []
         self.call_poke_api()
-        self.evolve_chain = LinkedList        
+        self.evolve_chain = LinkedList()   
             
     def get_evolution_chain(self):
         response = get(self.species_url)
@@ -141,7 +141,7 @@ class Pokemon():
 
     def add_evolve_chain(self, current_pokemon, evolution_chain):
         node = Node(current_pokemon)
-        self.evolve_chain.add_node(node)
+        self.add_node(item)
         if not evolution_chain['evolves_to']:
             print(f'This is the final form')
             return
