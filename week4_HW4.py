@@ -12,8 +12,8 @@ def binary_tree_decorator(func):
     return wrapper 
 
 @binary_tree_decorator
-def binary_tree_decorator(bst):
+def binary_wrapper(bst):
     return bst
 
-result = binary_tree_decorator(5)
+result = binary_wrapper(5)
 print(result)
