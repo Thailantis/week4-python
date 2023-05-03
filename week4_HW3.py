@@ -142,8 +142,7 @@ class Pokemon():
     def add_evolve_chain(self, current_pokemon, evolution_chain):
         node = Node(current_pokemon)
         self.add_node(item)
-        if not evolution_chain['evolves_to']:
-            print(f'This is the final form')
+        print(f'This is the final form')
             return
         self.add_evolve_chain(evolution_chain['species']['name'], evolution_chain['evolves_to'][0])
 
