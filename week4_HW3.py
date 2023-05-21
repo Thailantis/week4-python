@@ -75,7 +75,6 @@ class LinkedList:
 
     def add_list_elements(self, list):
        for item in list:
-          if list in list:
              self.add_node(item)
        return self.head
 
